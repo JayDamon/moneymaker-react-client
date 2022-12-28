@@ -1,4 +1,4 @@
-import './App.css';
+import './App.styles.tsx';
 import { Route, Routes } from 'react-router-dom';
 import Navigation from './routes/navigation/navigation.component';
 
