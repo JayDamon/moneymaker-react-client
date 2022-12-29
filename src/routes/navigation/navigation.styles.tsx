@@ -1,18 +1,22 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const NavigationContainer = styled.div`
-  height: 70px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  // color: white;
-`
+const drawerWidth = 240;
 
-export const NavigationTitle = styled.div`
-  font-size: 25px;
-`
-
-export const NavigationButton = styled.div`
-  font-size: 18px;
-`
+export const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+  open?: boolean;
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create('margin', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: `-${drawerWidth}px`,
+  ...(open && {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  }),
+}));
