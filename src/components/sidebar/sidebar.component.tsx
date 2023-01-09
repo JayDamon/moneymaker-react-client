@@ -6,6 +6,7 @@ import { DrawerContext, DrawerContextType } from "../../contexts/drawer.context"
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { DrawerHeader } from "../drawer-header/drawer-header.component";
+import { doStuff } from "../../utils/axios.utils";
 
 const drawerWidth = 240;
 
@@ -16,6 +17,10 @@ const SidebarComponent = () => {
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  }
+
+  const handleCallBackend = () => {
+    doStuff();
   }
 
   return (
@@ -47,7 +52,7 @@ const SidebarComponent = () => {
           </ListItem>
         ))}
         <ListItem key='Add Account' disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={handleCallBackend}>
             <ListItemText primary='Add Account' />
           </ListItemButton>
         </ListItem>
