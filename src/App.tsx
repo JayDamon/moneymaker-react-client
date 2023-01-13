@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={
+      <Route path="/*" element={
         (keycloak.authenticated ? <Navigation /> : <Home />
         )} />
     </Routes>

@@ -26,9 +26,9 @@ const Navigation = () => {
           <DrawerHeader />
           {isUserOptionsOpen && <UserDropdown />}
           <Routes>
-            <Route path="/" element={<SecuredHome />}>
-              <Route path="/plaid" element={<Plaid />} />
-            </Route>
+            <Route index element={<SecuredHome />} />
+            <Route path="/add-account" element={<Plaid />} />
+
           </Routes>
         </div>
       </Main>

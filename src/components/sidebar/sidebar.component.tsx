@@ -6,22 +6,56 @@ import { DrawerContext, DrawerContextType } from "../../contexts/drawer.context"
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { DrawerHeader } from "../drawer-header/drawer-header.component";
-import { doStuff } from "../../utils/axios.utils";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
+
+
 
 const SidebarComponent = () => {
 
   const { isDrawerOpen, setIsDrawerOpen } = useContext(DrawerContext) as DrawerContextType;
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(!isDrawerOpen);
   }
 
-  const handleCallBackend = () => {
-    doStuff();
-  }
+  const sideBarButtons = [
+    {
+      displayText: "Home",
+      onClickHandler: () => {
+        navigate("/")
+      }
+    },
+    {
+      displayText: "Accounts",
+      onClickHandler: () => {
+        navigate("/accounts")
+      }
+    },
+    {
+      displayText: "Transactions",
+      onClickHandler: () => {
+        navigate("/transactions")
+      }
+    },
+    {
+      displayText: "Budget",
+      onClickHandler: () => {
+        navigate("/budgets")
+      }
+    },
+    {
+      displayText: "Add Account",
+      onClickHandler: () => {
+        navigate("/add-account")
+      }
+    }
+  ]
+
+
 
   return (
     <Drawer
@@ -44,18 +78,13 @@ const SidebarComponent = () => {
       </DrawerHeader>
       <Divider />
       <List>
-        {['Home', 'Accounts', 'Transactions', 'Budget'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
+        {sideBarButtons.map((val, index) => (
+          <ListItem key={val.displayText} disablePadding>
+            <ListItemButton onClick={val.onClickHandler}>
+              <ListItemText primary={val.displayText} />
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItem key='Add Account' disablePadding>
-          <ListItemButton onClick={handleCallBackend}>
-            <ListItemText primary='Add Account' />
-          </ListItemButton>
-        </ListItem>
       </List>
     </Drawer>
   )

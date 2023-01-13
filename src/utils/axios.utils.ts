@@ -29,12 +29,3 @@ axiosClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const doStuff = () => {
-
-  axiosClient.get("")
-    .then(res => {
-      const resData = res.data;
-      console.log(resData);
-    });
-};
