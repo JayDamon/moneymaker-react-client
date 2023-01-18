@@ -7,8 +7,6 @@ const App = () => {
 
   const { keycloak } = useKeycloak();
 
-  console.log("Logged in ", keycloak.authenticated);
-
   return (
     <Routes>
       <Route path="/*" element={
