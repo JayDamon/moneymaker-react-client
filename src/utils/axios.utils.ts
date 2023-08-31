@@ -2,7 +2,8 @@ import axios, { AxiosHeaders, AxiosRequestConfig } from 'axios';
 import keycloak from './keycloak.utils';
 
 export const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_URL
+  baseURL: 'http://localhost:8080'
+  // baseURL: process.env.REACT_APP_SERVER_URL
 });
 
 axiosClient.defaults.headers.common['Authorization'] = `Bearer ${keycloak.token}`;
