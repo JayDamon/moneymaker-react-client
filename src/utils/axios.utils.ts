@@ -2,7 +2,7 @@ import axios, { AxiosHeaders, AxiosRequestConfig } from 'axios';
 import keycloak from './keycloak.utils';
 
 export const axiosClient = axios.create({
-  baseURL: 'http://localhost:8080'
+  baseURL: 'http://localhost:8090'
   // baseURL: process.env.REACT_APP_SERVER_URL
 });
 
